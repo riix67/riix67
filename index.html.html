@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>تحدي الفيفا - لنلعب الليلة!</title>
+    
+    <!-- إضافة مكتبة Google Fonts للخطوط الاحترافية -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS لتنسيق الصفحة بشكل احترافي -->
+    <style>
+        /* إعدادات عامة للصفحة */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1b1b1b 40%, #007AFF 100%);
+            color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* تنسيق الهيدر */
+        header {
+            background-color: #007AFF;
+            color: white;
+            padding: 30px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 2px;
+            animation: slideIn 1.5s ease;
+        }
+
+        /* تأثيرات CSS */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700;
+            }
+        }
+
+        /* تنسيق النص التحفيزي */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        .container p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* تنسيق الزر */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            background-color: #FFD700;
+            color: #1b1b1b;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: #FFB600;
+            transform: scale(1.05);
+        }
+
+        /* نافذة منبثقة (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content p {
+            font-size: 1.5rem;
+            color: #1b1b1b;
+        }
+
+        .close {
+            color: #1b1b1b;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #FF0000;
+        }
+
+        /* تحسين العرض على الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container h2 {
+                font-size: 1.8rem;
+            }
+
+            .container p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                font-size: 1.2rem;
+                padding: 12px 25px;
+            }
+
+            .modal-content p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <h1>⚽ تحدي الفيفا الكبير 🎮</h1>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <h2>هل أنت مستعد للفوز الليلة؟</h2>
+        <p>أصدقائي الأعزاء، الليلة ستكون الأمسية المليئة بالتحديات الحماسية! 🔥<br> جهزوا مهاراتكم، لأن المنافسة ستكون شرسة!</p>
+        <p>كلنا نعرف من هو البطل الحقيقي، لكن الليلة قد تتغير الأمور... 😉</p>
+
+        <!-- زر التحفيز -->
+        <button class="btn" onclick="showModal()">أنا جاهز للتحدي!</button>
+    </div>
+
+    <!-- نافذة منبثقة -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>🎉 أنت البطل المنتظر! لكن هل تستطيع الاحتفاظ باللقب الليلة؟ 😉</p>
+        </div>
+    </div>
+
+    <!-- JavaScript لإظهار وإغلاق النافذة المنبثقة -->
+    <script>
+        function showModal() {
+            document.getElementById("myModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // لإغلاق النافذة عند النقر خارج المحتوى
+        window.onclick = function(event) {
+            let modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
